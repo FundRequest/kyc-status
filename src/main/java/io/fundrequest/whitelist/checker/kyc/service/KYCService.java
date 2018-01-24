@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 
 @Service
 public class KYCService {
@@ -15,7 +17,15 @@ public class KYCService {
     private KYCRepository kycRepository;
 
     @Transactional(readOnly = true)
-    public KYCResultDto search(final String address) {
+    public Optional<KYCResultDto> search(final String address) {
+        Optional<KYCEntry> byAddress = kycRepository.findByAddress(address);
+        return byAddress
+                .map(entry -> {
+                    return new KYCResultDto()
+                            .setAddress(entry.getAddress())
+                            .setStatus(entry.getStatus())
+
+                })
 
     }
 
