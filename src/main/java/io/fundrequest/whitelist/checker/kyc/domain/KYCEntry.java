@@ -70,16 +70,12 @@ public class KYCEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KYCEntry kycEntry = (KYCEntry) o;
-        return Objects.equals(id, kycEntry.id) &&
-                Objects.equals(address, kycEntry.address) &&
-                Objects.equals(referralKey, kycEntry.referralKey) &&
-                Objects.equals(referredBy, kycEntry.referredBy) &&
-                Objects.equals(status, kycEntry.status);
+        return Objects.equals(address, kycEntry.address);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, address, referralKey, referredBy, status);
+        return Objects.hash(address);
     }
 }
