@@ -48,7 +48,7 @@ class RegistrationServiceImpl implements RegistrationService {
                 .execute();
         List<List<Object>> values = response.getValues();
         Set<KYCEntry> entries = values.stream().map(this::createKycEntry).collect(Collectors.toSet());
-        kycService.bulk(entries);
+        kycService.insert(entries);
     }
 
     private KYCEntry createKycEntry(List<Object> row) {

@@ -29,7 +29,7 @@ public class KYCService {
     }
 
     @Transactional
-    public void bulk(Iterable<KYCEntry> kycEntries) {
+    public void insert(Iterable<KYCEntry> kycEntries) {
         kycRepository.deleteAll();
         kycRepository.save(kycEntries);
     }
