@@ -33,5 +33,7 @@ dependencies {
 	compile('org.mariadb.jdbc:mariadb-java-client')
 	compile('org.flywaydb:flyway-core')
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

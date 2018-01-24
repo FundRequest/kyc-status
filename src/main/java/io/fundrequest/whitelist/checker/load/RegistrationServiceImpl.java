@@ -9,6 +9,7 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import io.fundrequest.whitelist.checker.kyc.domain.KYCEntry;
 import io.fundrequest.whitelist.checker.kyc.service.KYCService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -52,11 +53,26 @@ class RegistrationServiceImpl implements RegistrationService {
     }
 
     private KYCEntry createKycEntry(List<Object> row) {
+        String address = getRowValue(row, 5);
+        String referredBy = getReferredBy(row, 10);
         return new KYCEntry()
-                .setAddress(getRowValue(row, 5))
-                .setReferredBy(getRowValue(row, 10))
-                .setRefferalKey("key")
+                .setAddress(address)
+                .setReferredBy(referredBy)
+                .setReferralKey(address)
                 .setStatus(getRowValue(row, 11));
+    }
+
+    private String getReferredBy(List<Object> row, int i) {
+        String key = getRowValue(row, i);
+        if (StringUtils.isNotBlank(key)) {
+            key = key.replace("dke02sx6", "");
+            key = key.replace("dke02sx", "");
+            if(key.length() > 42) {
+                key = key.substring(0, 42);
+            }
+            return key;
+        }
+        return null;
     }
 
     private String getRowValue(List row, int i) {
