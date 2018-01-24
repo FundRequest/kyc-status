@@ -1,5 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
 .gradle
-whitelist-checker.iml
+*.iml
 build/
+
+/src/main/resources/google-sheets-client-secret.json
