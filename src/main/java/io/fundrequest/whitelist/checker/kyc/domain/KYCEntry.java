@@ -1,6 +1,7 @@
 package io.fundrequest.whitelist.checker.kyc.domain;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "kyc_entries")
@@ -62,5 +63,23 @@ public class KYCEntry {
     public KYCEntry setStatus(final String status) {
         this.status = status;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        KYCEntry kycEntry = (KYCEntry) o;
+        return Objects.equals(id, kycEntry.id) &&
+                Objects.equals(address, kycEntry.address) &&
+                Objects.equals(referralKey, kycEntry.referralKey) &&
+                Objects.equals(referredBy, kycEntry.referredBy) &&
+                Objects.equals(status, kycEntry.status);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, address, referralKey, referredBy, status);
     }
 }
