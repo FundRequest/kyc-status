@@ -10,7 +10,10 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 import io.fundrequest.whitelist.checker.kyc.domain.KYCEntry;
 import io.fundrequest.whitelist.checker.kyc.service.KYCService;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
@@ -22,7 +25,7 @@ import java.util.stream.Collectors;
 
 @Service
 class RegistrationServiceImpl implements RegistrationService {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationServiceImpl.class);
     private String spreadsheetId;
     private String googleClientSecret;
     private KYCService kycService;
@@ -34,10 +37,13 @@ class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
+    @Scheduled(fixedDelay = 300000L)
     public void load() {
         try {
             importFromSheets();
+            LOGGER.info("Imported new data");
         } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
             throw new RuntimeException("unable to load");
         }
     }
@@ -67,7 +73,7 @@ class RegistrationServiceImpl implements RegistrationService {
         if (StringUtils.isNotBlank(key)) {
             key = key.replace("dke02sx6", "");
             key = key.replace("dke02sx", "");
-            if(key.length() > 42) {
+            if (key.length() > 42) {
                 key = key.substring(0, 42);
             }
             return key;
