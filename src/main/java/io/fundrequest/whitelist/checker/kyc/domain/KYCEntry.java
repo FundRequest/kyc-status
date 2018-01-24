@@ -3,7 +3,7 @@ package io.fundrequest.whitelist.checker.kyc.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "kyc_entry")
+@Table(name = "kyc_entries")
 public class KYCEntry {
 
     @Id
