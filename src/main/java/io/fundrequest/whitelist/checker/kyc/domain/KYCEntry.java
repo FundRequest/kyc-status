@@ -18,6 +18,8 @@ public class KYCEntry {
     private String referredBy;
     @Column(name = "status")
     private String status;
+    @Column(name = "message")
+    private String message;
 
     public Long getId() {
         return id;
@@ -37,14 +39,6 @@ public class KYCEntry {
         return this;
     }
 
-    public String getRefferalKey() {
-        return referralKey;
-    }
-
-    public KYCEntry setRefferalKey(final String referralKey) {
-        this.referralKey = referralKey;
-        return this;
-    }
 
     public String getReferredBy() {
         return referredBy;
@@ -61,6 +55,24 @@ public class KYCEntry {
 
     public KYCEntry setStatus(final String status) {
         this.status = status;
+        return this;
+    }
+
+    public String getReferralKey() {
+        return referralKey;
+    }
+
+    public KYCEntry setReferralKey(final String referralKey) {
+        this.referralKey = referralKey;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public KYCEntry setMessage(final String message) {
+        this.message = message;
         return this;
     }
 }

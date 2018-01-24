@@ -18,15 +18,14 @@ public class KYCService {
 
     @Transactional(readOnly = true)
     public Optional<KYCResultDto> search(final String address) {
-        Optional<KYCEntry> byAddress = kycRepository.findByAddress(address);
+        final Optional<KYCEntry> byAddress = kycRepository.findByAddress(address);
         return byAddress
-                .map(entry -> {
-                    return new KYCResultDto()
-                            .setAddress(entry.getAddress())
-                            .setStatus(entry.getStatus())
-
-                })
-
+                .map(entry -> new KYCResultDto()
+                        .setAddress(entry.getAddress())
+                        .setStatus(entry.getStatus())
+                        .setMessage(entry.getMessage())
+                        .setReferralKey(entry.getReferralKey()))
+                .map(x -> x.setReferralCount(kycRepository.countAllByReferredBy(x.getReferralKey())));
     }
 
     @Transactional
@@ -34,6 +33,4 @@ public class KYCService {
         kycRepository.deleteAll();
         kycRepository.save(kycEntries);
     }
-
-
 }

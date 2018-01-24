@@ -5,7 +5,7 @@ public class KYCResultDto {
     private String address;
     private Long referralCount;
     private String status;
-    private String referral;
+    private String referralKey;
     private String message;
 
     public String getAddress() {
@@ -35,12 +35,12 @@ public class KYCResultDto {
         return this;
     }
 
-    public String getReferral() {
-        return referral;
+    public String getReferralKey() {
+        return referralKey;
     }
 
-    public KYCResultDto setReferral(final String referral) {
-        this.referral = referral;
+    public KYCResultDto setReferralKey(final String referralKey) {
+        this.referralKey = referralKey;
         return this;
     }
 
