@@ -2,3 +2,4 @@
 .idea
 .gradle
 whitelist-checker.iml
+build/
