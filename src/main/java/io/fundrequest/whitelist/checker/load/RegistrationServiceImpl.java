@@ -29,6 +29,7 @@ class RegistrationServiceImpl {
     private static final int ROW_STATUS = 11;
     private static final int ROW_REFERRED_BY = 10;
     private static final int ROW_ADDRESS = 5;
+    public static final int ROW_MESSAGE = 12;
     private String spreadsheetId;
     private String googleClientSecret;
     private KYCService kycService;
@@ -71,7 +72,8 @@ class RegistrationServiceImpl {
                 .setAddress(address)
                 .setReferredBy(referredBy)
                 .setReferralKey(address)
-                .setStatus(getRowValue(row, ROW_STATUS));
+                .setStatus(getRowValue(row, ROW_STATUS))
+                .setMessage(getRowValue(row, ROW_MESSAGE));
     }
 
     private String getReferredBy(List<Object> row, int i) {
