@@ -1,4 +1,11 @@
 (function () {
+  $(document).ajaxSend(function(event, request, settings) {
+    $('#loader').show();
+  });
+
+  $(document).ajaxComplete(function(event, request, settings) {
+    $('#loader').hide();
+  });
   jQuery(document).ready(function () {
     $(".icon_info").tooltip();
     var $result = $('#result');

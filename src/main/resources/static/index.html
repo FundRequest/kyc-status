@@ -31,11 +31,11 @@
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <form id="statusForm" style="width: 100%">
                 <div class="form-group">
                     <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Ether address:</span>
+                        <span class="input-group-addon" id="basic-addon1">Address:</span>
                         <input type="text" class="form-control"
                                placeholder="ex. 0x123f681646d4a755815f9cb19e1acc8565a0c2ac"
                                id="address" pattern="^(0x)?[0-9a-fA-F]{40}$" required>
@@ -45,10 +45,10 @@
                     </div>
                 </div>
             </form>
-
         </div>
 
     </div>
+    <div id="loader"></div>
     <div id="result">
         <div class="spacer20"></div>
         <div class="alert alert-info">
