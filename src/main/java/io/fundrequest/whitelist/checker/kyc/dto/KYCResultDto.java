@@ -5,7 +5,7 @@ public class KYCResultDto {
     private String address;
     private Long referralCount;
     private String message;
-    private KYCStatus status;
+    private KYCStatusDto status;
 
     public String getAddress() {
         return address;
@@ -25,11 +25,11 @@ public class KYCResultDto {
         return this;
     }
 
-    public KYCStatus getStatus() {
+    public KYCStatusDto getStatus() {
         return status;
     }
 
-    public KYCResultDto setStatus(final KYCStatus status) {
+    public KYCResultDto setStatus(final KYCStatusDto status) {
         this.status = status;
         return this;
     }

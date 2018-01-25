@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.stream.Stream;
 
-public enum KYCStatus {
+public enum KYCStatusEnum {
 
     APPROVED("approve", "Approved", "Your registration was successful and your account will be whitelisted."), DECLINED("decline", "Declined", "Your registration was declined because you failed the KYC-check"), TO_CONTACT("to contact", "More information needed", "You will be contacted because your KYC-process was incomplete."), PENDING("", "Pending", "Your registration is still pending and we'll do the check quite soon.");
 
@@ -12,7 +12,7 @@ public enum KYCStatus {
     private String label;
     private String message;
 
-    KYCStatus(final String status, final String label, final String message) {
+    KYCStatusEnum(final String status, final String label, final String message) {
         this.status = status;
         this.label = label;
         this.message = message;
@@ -30,7 +30,7 @@ public enum KYCStatus {
         return message;
     }
 
-    public static KYCStatus fromStatus(final String status) {
+    public static KYCStatusEnum fromStatus(final String status) {
         if (StringUtils.isEmpty(status)) {
             return PENDING;
         } else {
@@ -39,5 +39,9 @@ public enum KYCStatus {
                     .findFirst()
                     .orElse(PENDING);
         }
+    }
+
+    public KYCStatusDto toDto() {
+        return new KYCStatusDto(status, message, label);
     }
 }

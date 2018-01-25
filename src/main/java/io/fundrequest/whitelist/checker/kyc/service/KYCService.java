@@ -2,7 +2,7 @@ package io.fundrequest.whitelist.checker.kyc.service;
 
 import io.fundrequest.whitelist.checker.kyc.domain.KYCEntry;
 import io.fundrequest.whitelist.checker.kyc.dto.KYCResultDto;
-import io.fundrequest.whitelist.checker.kyc.dto.KYCStatus;
+import io.fundrequest.whitelist.checker.kyc.dto.KYCStatusEnum;
 import io.fundrequest.whitelist.checker.kyc.repository.KYCRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class KYCService {
             return byAddress
                     .map(entry -> new KYCResultDto()
                             .setAddress(entry.getAddress())
-                            .setStatus(KYCStatus.valueOf(entry.getStatus()))
+                            .setStatus(KYCStatusEnum.fromStatus(entry.getStatus()).toDto())
                             .setMessage(entry.getMessage()))
                     .map(x -> x.setReferralCount(
                             kycRepository.countAllByReferredBy(x.getAddress()
