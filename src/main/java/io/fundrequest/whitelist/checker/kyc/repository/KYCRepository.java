@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface KYCRepository extends JpaRepository<KYCEntry, Long> {
 
-    @Query("select count(kycEntry) from KYCEntry kycEntry where lower(referredBy) like lower(:address)")
+    @Query("select count(kycEntry) from KYCEntry kycEntry where lower(referredBy) like lower(:referredBy)")
     Long countAllByReferredBy(@Param("referredBy") final String referralKey);
 
     @Query("select kycEntry from KYCEntry kycEntry where lower(address) like lower(:address)")
