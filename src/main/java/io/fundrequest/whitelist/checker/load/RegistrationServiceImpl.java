@@ -7,6 +7,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import io.fundrequest.whitelist.checker.RegistrationService;
 import io.fundrequest.whitelist.checker.kyc.domain.KYCEntry;
 import io.fundrequest.whitelist.checker.kyc.service.KYCService;
 import org.apache.commons.lang3.StringUtils;
@@ -23,9 +24,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-class RegistrationServiceImpl {
+class RegistrationServiceImpl implements RegistrationService {
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationServiceImpl.class);
-    private static final String SHEET_RANGE = "A3:L";
+    private static final String SHEET_RANGE = "A3:M";
     private static final int ROW_STATUS = 11;
     private static final int ROW_REFERRED_BY = 10;
     private static final int ROW_ADDRESS = 5;
@@ -43,6 +44,7 @@ class RegistrationServiceImpl {
     }
 
     @Scheduled(fixedDelay = 300000L)
+    @Override
     public void load() {
         try {
             importFromSheets();
@@ -68,12 +70,13 @@ class RegistrationServiceImpl {
     private KYCEntry createKycEntry(List<Object> row) {
         final String address = getRowValue(row, ROW_ADDRESS);
         final String referredBy = getReferredBy(row, ROW_REFERRED_BY);
+        String message = getRowValue(row, ROW_MESSAGE);
         return new KYCEntry()
                 .setAddress(address)
                 .setReferredBy(referredBy)
                 .setReferralKey(address)
                 .setStatus(getRowValue(row, ROW_STATUS))
-                .setMessage(getRowValue(row, ROW_MESSAGE));
+                .setMessage(message);
     }
 
     private String getReferredBy(List<Object> row, int i) {

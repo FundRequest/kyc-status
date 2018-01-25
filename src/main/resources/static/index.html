@@ -24,39 +24,70 @@
 <div class="jumbotron">
     <div class="container">
         <p><img src="img/Fundrequest-title.png"/></p>
-        <p>Registration status</p>
+        <p class="subtitle">Registration status</p>
     </div>
 </div>
 
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                magna
-                mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-10">
+            <form id="statusForm" style="width: 100%">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">Ether address:</span>
+                        <input type="text" class="form-control"
+                               placeholder="ex. 0x123f681646d4a755815f9cb19e1acc8565a0c2ac"
+                               id="address" pattern="^(0x)?[0-9a-fA-F]{40}$" required>
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary" id="btnSearch">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+
         </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                magna
-                mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+    </div>
+    <div id="result">
+        <div class="spacer20"></div>
+        <div class="alert alert-info">
+            <strong>Found!</strong> Your address was successfully registered.
         </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id
-                ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh,
-                ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="row">
+            <div class="col-md-10 col-10">
+                <div class="form-group">
+                    <label>Status</label>
+                    <p>
+                        <span class="glyphicon glyphicon-info-sign icon_info" title="" id="statusDescription"></span>
+                        <span id="status"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label>Number of referrals</label>
+                    <p id="referralCount"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="messageRow">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label>Message</label>
+                    <p id="message"></p>
+                </div>
+            </div>
         </div>
     </div>
+    <div id="no-result">
+        <div class="alert alert-danger">
+            <strong>Not found!</strong> This address was not fund thus not whitelisted.
+        </div>
+    </div>
+
 
     <hr>
 
@@ -70,5 +101,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

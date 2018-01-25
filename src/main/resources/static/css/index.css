@@ -5,5 +5,22 @@ body {
 
 img {
     width: 100%;
+    max-width: 400px;
     height: auto;
+}
+
+.subtitle {
+    color: #40a6da;
+}
+
+.spacer20 {
+    height: 20px;
+}
+
+#result {
+    display: none;
+}
+
+#no-result {
+    display: none;
 }
