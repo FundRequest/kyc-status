@@ -6,7 +6,10 @@ import java.util.stream.Stream;
 
 public enum KYCStatusEnum {
 
-    APPROVED("approve", "Approved", "Your registration was successful and your account will be whitelisted."), DECLINED("decline", "Declined", "Your registration was declined because you failed the KYC-check"), TO_CONTACT("to contact", "More information needed", "You will be contacted because your KYC-process was incomplete."), PENDING("", "Pending", "Your registration is still pending and we'll do the check quite soon.");
+    APPROVED("approve", "Approved", "Your registration was successful and your account will be whitelisted."),
+    DECLINED("decline", "Declined", "Your registration was declined because you failed the KYC-check"),
+    TO_CONTACT("to contact", "More information needed", "You will be contacted because your KYC-process was incomplete."),
+    PENDING("", "Pending", "Your registration was saved successfully, KYC information still needs to be validated.");
 
     private String status;
     private String label;
