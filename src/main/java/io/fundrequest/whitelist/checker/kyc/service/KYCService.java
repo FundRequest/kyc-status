@@ -23,9 +23,8 @@ public class KYCService {
                 .map(entry -> new KYCResultDto()
                         .setAddress(entry.getAddress())
                         .setStatus(entry.getStatus())
-                        .setMessage(entry.getMessage())
-                        .setReferralKey(entry.getReferralKey()))
-                .map(x -> x.setReferralCount(kycRepository.countAllByReferredBy(x.getReferralKey())));
+                        .setMessage(entry.getMessage()))
+                .map(x -> x.setReferralCount(kycRepository.countAllByReferredBy(x.getAddress())));
     }
 
     @Transactional
