@@ -1,9 +1,9 @@
 (function () {
-  $(document).ajaxSend(function(event, request, settings) {
+  $(document).ajaxSend(function (event, request, settings) {
     $('#loader').show();
   });
 
-  $(document).ajaxComplete(function(event, request, settings) {
+  $(document).ajaxComplete(function (event, request, settings) {
     $('#loader').hide();
   });
   jQuery(document).ready(function () {
@@ -15,12 +15,16 @@
     var $messageRow = $('#messageRow');
     var $message = $('#message');
     var $statusDescription = $('#statusDescription');
+
+    updateProgress();
+    setInterval(updateProgress, 60000);
+
     $('#statusForm').submit(function (e) {
       e.preventDefault();
       $result.hide();
       $noResult.hide();
       var address = $('#address').val();
-      $.get("kyc/" + address, function (data) {
+      $.get("kyc/status/" + address, function (data) {
         if (data) {
           $messageRow.hide();
           $status.text(data['status']['label']);
@@ -40,4 +44,14 @@
 
     });
   });
+
+  var updateProgress = function () {
+
+    $.get("kyc/progress", function (data) {
+      $("#approvedPb").css("width", data['approved'] + "%");
+      $("#declinedPb").css("width", data['declined'] + "%");
+      $("#pendingPb").css("width", data['pending'] + "%");
+      $("#toContactPb").css("width", data['toContact'] + "%");
+    });
+  };
 })();
