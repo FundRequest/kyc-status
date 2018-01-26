@@ -73,9 +73,9 @@ class RegistrationServiceImpl implements RegistrationService {
         final String referredBy = getReferredBy(row, ROW_REFERRED_BY);
         String message = getRowValue(row, ROW_MESSAGE);
         return new KYCEntry()
-                .setAddress(address)
-                .setReferredBy(referredBy)
-                .setReferralKey(address)
+                .setAddress(address == null ? null : address.trim())
+                .setReferredBy(referredBy == null ? null : referredBy.trim())
+                .setReferralKey(address == null ? null : address.trim())
                 .setStatus(getStatus(row))
                 .setMessage(null);
     }
