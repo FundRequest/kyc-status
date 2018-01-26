@@ -5,6 +5,7 @@ import io.fundrequest.whitelist.checker.kyc.dto.KYCResultDto;
 import io.fundrequest.whitelist.checker.kyc.dto.KYCStatusEnum;
 import io.fundrequest.whitelist.checker.kyc.dto.ProgressDto;
 import io.fundrequest.whitelist.checker.kyc.repository.KYCRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -69,7 +70,7 @@ public class KYCService {
     }
 
     private boolean isValidAddress(final String address) {
-        return ignoreCaseAddrPattern.matcher(address).find();
+        return !StringUtils.isEmpty(address) && ignoreCaseAddrPattern.matcher(address.trim()).find();
     }
 
     @Transactional
