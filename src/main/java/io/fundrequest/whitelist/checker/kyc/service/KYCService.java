@@ -58,7 +58,11 @@ public class KYCService {
     }
 
     private int calculatePercentage(Map<KYCStatusEnum, Long> statusCount, KYCStatusEnum approved, int totalSize) {
-        return (int) ((statusCount.get(approved).doubleValue() / totalSize) * 100);
+        Long result = statusCount.get(approved);
+        if (result == null || result == 0) {
+            return 0;
+        }
+        return (int) ((result.doubleValue() / totalSize) * 100);
     }
 
     private boolean isValidAddress(final String address) {
