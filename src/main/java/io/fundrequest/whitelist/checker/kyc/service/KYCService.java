@@ -57,8 +57,11 @@ public class KYCService {
         return new ProgressDto().setApproved(approved).setDeclined(declined).setToContact(toContact).setPending(pending);
     }
 
-    private int calculatePercentage(Map<KYCStatusEnum, Long> statusCount, KYCStatusEnum approved, int totalSize) {
-        Long result = statusCount.get(approved);
+    private int calculatePercentage(Map<KYCStatusEnum, Long> statusCount, KYCStatusEnum status, int totalSize) {
+        if (statusCount == null || status == null) {
+            return 0;
+        }
+        Long result = statusCount.get(status);
         if (result == null || result == 0) {
             return 0;
         }
