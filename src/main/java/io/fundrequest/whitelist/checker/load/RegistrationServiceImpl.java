@@ -9,6 +9,7 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import io.fundrequest.whitelist.checker.RegistrationService;
 import io.fundrequest.whitelist.checker.kyc.domain.KYCEntry;
+import io.fundrequest.whitelist.checker.kyc.dto.KYCStatusEnum;
 import io.fundrequest.whitelist.checker.kyc.service.KYCService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -75,8 +76,16 @@ class RegistrationServiceImpl implements RegistrationService {
                 .setAddress(address)
                 .setReferredBy(referredBy)
                 .setReferralKey(address)
-                .setStatus(getRowValue(row, ROW_STATUS))
-                .setMessage(message);
+                .setStatus(getStatus(row))
+                .setMessage(null);
+    }
+
+    private String getStatus(List<Object> row) {
+        String status = getRowValue(row, ROW_STATUS);
+        if (StringUtils.isNotBlank(status) && KYCStatusEnum.TO_CONTACT.getStatus().equalsIgnoreCase(status)) {
+            return KYCStatusEnum.PENDING.getStatus();
+        }
+        return status;
     }
 
     private String getReferredBy(List<Object> row, int i) {
