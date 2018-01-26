@@ -15,6 +15,8 @@
     var $messageRow = $('#messageRow');
     var $message = $('#message');
     var $statusDescription = $('#statusDescription');
+    var $pendingStep = $('#pendingStep');
+    var $approvedStep = $('#approvedStep');
 
     updateProgress();
     setInterval(updateProgress, 60000);
@@ -35,6 +37,17 @@
             $message.text(data['message']);
             $messageRow.show();
           }
+
+
+          $pendingStep.removeClass('step-done');
+          $approvedStep.removeClass('step-done');
+          if(data['status']['label'] === 'Pending' || data['status']['label'] === 'Approved') {
+            $pendingStep.addClass('step-done');
+          }
+          if(data['status']['label'] === 'Approved') {
+            $approvedStep.addClass('step-done');
+          }
+
           $result.show();
         } else {
           $noResult.show();

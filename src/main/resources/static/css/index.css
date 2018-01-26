@@ -37,6 +37,22 @@ img {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.steps .fa-check {
+    display: none;
+}
+
+.steps .step-done {
+    color: darkgray;;
+}
+
+.steps .step-done .fa-check {
+    display: inline;
 }
