@@ -32,7 +32,7 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <form id="statusForm" style="width: 100%">
                 <div class="form-group">
                     <div class="input-group">
@@ -44,17 +44,27 @@
                             <button type="submit" class="btn btn-primary" id="btnSearch">Search</button>
                         </span>
                     </div>
+
                 </div>
             </form>
         </div>
-
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <i>Note: please fill in your ether address in the search box above to check your status</i>
+        </div>
     </div>
     <div id="loader"></div>
     <div id="result">
         <div class="spacer20"></div>
-        <div class="alert alert-info">
-            <strong>Found!</strong> Your address was successfully registered.
+        <div class="row">
+            <div class="col-md-10">
+                <div class="alert alert-info">
+                    <strong>Found!</strong> Your address was successfully registered.
+                </div>
+            </div>
         </div>
+
         <div class="row">
             <div class="col-md-10">
                 <div class="form-group">
@@ -87,8 +97,10 @@
                 <div class="form-group">
                     <label>Steps to participate in token sale:</label>
                     <ul class="steps">
-                        <li id="pendingStep" class="step-done">Register for token sale where you provided us your KYC information <i class="fa fa-check">(Successfully completed)</i></li>
-                        <li id="approvedStep" class="step-done">KYC Approval (FundRequest team will check provided KYC information is correct) <i class="fa fa-check">(Successfully completed)</i></li>
+                        <li id="pendingStep" class="step-done">Register for token sale where you provided us your KYC
+                            information <i class="fa fa-check">(Successfully completed)</i></li>
+                        <li id="approvedStep" class="step-done">KYC Approval (FundRequest team will check provided KYC
+                            information is correct) <i class="fa fa-check">(Successfully completed)</i></li>
                         <li>Read the FundRequest emails with updates on the token sale (will be sent soon)</li>
                         <li>Participate in token sale! (around mid feb)</li>
                     </ul>
@@ -134,6 +146,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-<script src="js/index.js"></script>
+<script src="js/index.js?v=1"></script>
 </body>
 </html>
