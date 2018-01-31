@@ -29,7 +29,7 @@
       $.get("kyc/status/" + address, function (data) {
         if (data) {
           $messageRow.hide();
-          $status.text(data['status']['label']);
+          $status.html(data['status']['label']);
           $statusDescription.attr('data-original-title', data['status']['message']);
           $statusDescription.attr('title', data['status']['message']);
           $referralCount.text(data['referralCount']);

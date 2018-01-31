@@ -8,7 +8,7 @@ public enum KYCStatusEnum {
 
     APPROVED("approve", "Approved", "Your registration was successful and your account will be whitelisted."),
     DECLINED("decline", "Declined", "Your registration was declined because you failed the KYC-check"),
-    TO_CONTACT("to contact", "More information needed", "You will be contacted because your KYC-process was incomplete."),
+    TO_CONTACT("to contact", "More information needed, please update your information using the <a href=\"https://fundrequest.typeform.com/to/U0Sd1U\">update form</a> by Feb 2.", "You will be contacted because your KYC-process was incomplete."),
     PENDING("", "Pending", "Your registration was saved successfully, KYC information still needs to be validated.");
 
     private String status;
