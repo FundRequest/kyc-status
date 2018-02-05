@@ -66,7 +66,7 @@ public class KYCService {
         if (result == null || result == 0) {
             return 0;
         }
-        return (int) ((result.doubleValue() / totalSize) * 100);
+        return (int) Math.round((result.doubleValue() / totalSize) * 100);
     }
 
     private boolean isValidAddress(final String address) {
