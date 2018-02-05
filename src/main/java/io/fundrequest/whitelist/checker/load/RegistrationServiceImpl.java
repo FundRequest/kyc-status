@@ -9,6 +9,7 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import io.fundrequest.whitelist.checker.RegistrationService;
 import io.fundrequest.whitelist.checker.kyc.domain.KYCEntry;
+import io.fundrequest.whitelist.checker.kyc.dto.KYCStatusEnum;
 import io.fundrequest.whitelist.checker.kyc.service.KYCService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
