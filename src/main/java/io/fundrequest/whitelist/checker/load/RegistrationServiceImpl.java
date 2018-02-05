@@ -64,9 +64,9 @@ class RegistrationServiceImpl implements RegistrationService {
                 .execute();
         final List<List<Object>> values = response.getValues();
 
-        Set<KYCEntry> result = new HashSet<>();
+        final Set<KYCEntry> result = new HashSet<>();
 
-        List<KYCEntry> entries = values.stream()
+        final List<KYCEntry> entries = values.stream()
                 .map(this::createKycEntry)
                 .collect(Collectors.toList());
 
