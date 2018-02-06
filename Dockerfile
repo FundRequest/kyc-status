@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-oraclejdk8:slim
 
 VOLUME /tmp
-ADD build/libs/tokensale-status-0.0.1-SNAPSHOT.jar kycstatus.jar
+ADD build/libs/kyc-status-0.0.1-SNAPSHOT.jar kycstatus.jar
 RUN sh -c 'touch /kycstatus.jar' && \
     mkdir config
 

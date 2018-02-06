@@ -9,6 +9,7 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import io.fundrequest.whitelist.checker.RegistrationService;
 import io.fundrequest.whitelist.checker.kyc.domain.KYCEntry;
+import io.fundrequest.whitelist.checker.kyc.dto.KYCStatusEnum;
 import io.fundrequest.whitelist.checker.kyc.service.KYCService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -20,7 +21,9 @@ import org.springframework.stereotype.Component;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -60,10 +63,25 @@ class RegistrationServiceImpl implements RegistrationService {
                 .get(spreadsheetId, SHEET_RANGE)
                 .execute();
         final List<List<Object>> values = response.getValues();
+
+        final Set<KYCEntry> result = new HashSet<>();
+
+        final List<KYCEntry> entries = values.stream()
+                .map(this::createKycEntry)
+                .collect(Collectors.toList());
+
+        entries.forEach(x -> {
+            if (!result.contains(x)) {
+                result.add(x);
+            } else {
+                if (KYCStatusEnum.APPROVED.getStatus().equalsIgnoreCase(x.getStatus())) {
+                    result.add(x);
+                }
+            }
+        });
+
         kycService.insert(
-                values.stream()
-                        .map(this::createKycEntry)
-                        .collect(Collectors.toSet())
+                result
         );
     }
 

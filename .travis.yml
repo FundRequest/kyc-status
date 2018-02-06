@@ -10,6 +10,6 @@ cache:
     - $HOME/.gradle/wrapper/
 
 after_success:
-  - docker build -t fundrequestio/tokensale-status:"$TRAVIS_BRANCH" .
+  - docker build -t fundrequestio/kyc-status:"$TRAVIS_BRANCH" .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - docker push fundrequestio/tokensale-status:"$TRAVIS_BRANCH"
+  - docker push fundrequestio/kyc-status:"$TRAVIS_BRANCH"
