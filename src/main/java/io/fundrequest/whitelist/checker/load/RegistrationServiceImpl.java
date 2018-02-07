@@ -75,6 +75,7 @@ class RegistrationServiceImpl implements RegistrationService {
                 result.add(x);
             } else {
                 if (KYCStatusEnum.APPROVED.getStatus().equalsIgnoreCase(x.getStatus())) {
+                    result.remove(x);
                     result.add(x);
                 }
             }
