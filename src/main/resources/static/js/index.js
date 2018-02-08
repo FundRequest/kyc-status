@@ -18,9 +18,6 @@
     var $pendingStep = $('#pendingStep');
     var $approvedStep = $('#approvedStep');
 
-    updateProgress();
-    setInterval(updateProgress, 60000);
-
     $('#statusForm').submit(function (e) {
       e.preventDefault();
       $result.hide();
@@ -57,14 +54,4 @@
 
     });
   });
-
-  var updateProgress = function () {
-
-    $.get("kyc/progress", function (data) {
-      $("#approvedPb").css("width", data['approved'] + "%");
-      $("#declinedPb").css("width", data['declined'] + "%");
-      $("#pendingPb").css("width", data['pending'] + "%");
-      $("#toContactPb").css("width", data['toContact'] + "%");
-    });
-  };
 })();
