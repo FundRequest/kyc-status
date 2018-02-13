@@ -18,10 +18,14 @@
     var $pendingStep = $('#pendingStep');
     var $approvedStep = $('#approvedStep');
     var $whitelistLink = $('#whitelist-link');
+    var $resultApproved = $('#result-approved');
+
+    $resultApproved.hide();
 
     $('#statusForm').submit(function (e) {
       e.preventDefault();
       $result.hide();
+      $resultApproved.hide();
       $noResult.hide();
       var address = $('#address').val();
       $.get("kyc/status/" + address, function (data) {
@@ -44,6 +48,7 @@
           }
           if(data['status']['label'] === 'Approved') {
             $approvedStep.addClass('step-done');
+            $resultApproved.show();
           }
 
           $result.show();
