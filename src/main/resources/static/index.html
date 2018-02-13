@@ -30,7 +30,6 @@
 </div>
 
 <div class="container">
-
     <div class="row">
         <div class="col-md-10">
             <form id="statusForm" style="width: 100%">
@@ -54,13 +53,24 @@
             <i>Note: please fill in your ether address in the search box above to check your status</i>
         </div>
     </div>
+
+    <div class="row" id="whitelist-link">
+        <div class="col-md-10">
+            <div class="bs-callout bs-callout-warning">
+                <h4>Not yet whitelisted?</h4>
+                <p><a href="https://waitlist.fundrequest.io" target="_blank">Join our wait list now!</a></p>
+            </div>
+        </div>
+    </div>
+
     <div id="loader"></div>
     <div id="result">
         <div class="spacer20"></div>
         <div class="row">
             <div class="col-md-10">
                 <div class="alert alert-info">
-                    <strong>Found!</strong> Your address was successfully registered.
+                    <strong>Found!</strong> <span>Your address was successfully registered.</span>
+                    <span>Join the sale: <strong><a href="https://sale.fundrequest.io/" target="_blank">https://sale.fundrequest.io/</a></strong></span>
                 </div>
             </div>
         </div>
@@ -95,15 +105,7 @@
         <div class="row" id="todoList">
             <div class="col-md-10">
                 <div class="form-group">
-                    <label>Steps to participate in token sale:</label>
-                    <ul class="steps">
-                        <li id="pendingStep" class="step-done">Register for token sale where you provided us your KYC
-                            information <i class="fa fa-check">(Successfully completed)</i></li>
-                        <li id="approvedStep" class="step-done">KYC Approval (FundRequest team will check provided KYC
-                            information is correct) <i class="fa fa-check">(Successfully completed)</i></li>
-                        <li>Read the FundRequest emails with updates on the token sale (will be sent soon)</li>
-                        <li>Participate in the token sale on Feb 12! For more info, please visit: <a href="https://sale.fundrequest.io/" target="_blank">https://sale.fundrequest.io/</a></li>
-                    </ul>
+
                 </div>
             </div>
         </div>
@@ -128,6 +130,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-<script src="js/index.js?v=1"></script>
+<script src="js/index.js?v=2"></script>
 </body>
 </html>

@@ -17,6 +17,7 @@
     var $statusDescription = $('#statusDescription');
     var $pendingStep = $('#pendingStep');
     var $approvedStep = $('#approvedStep');
+    var $whitelistLink = $('#whitelist-link');
 
     $('#statusForm').submit(function (e) {
       e.preventDefault();
@@ -46,6 +47,7 @@
           }
 
           $result.show();
+          $whitelistLink.hide();
         } else {
           $noResult.show();
         }
